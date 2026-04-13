@@ -76,7 +76,7 @@ incoming_lids/
 
 ```env
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-OPERATOR_CHAT_ID=-1001234567890
+OPERATOR_CHAT_ID=your_operator_chat_id
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_MODEL=gpt-4.1-mini
 OPENAI_BASE_URL=https://api.openai.com/v1
