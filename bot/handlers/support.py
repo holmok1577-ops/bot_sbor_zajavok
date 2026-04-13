@@ -11,10 +11,10 @@ from services.storage import InMemorySessionRepository
 logger = logging.getLogger(__name__)
 router = Router()
 
-START_MESSAGE = "Здравствуйте! Я помогу вам с обращением в техподдержку. Как вас зовут?"
+START_MESSAGE = "Здравствуйте! Я помогу записаться на консультацию. Как вас зовут?"
 RESET_MESSAGE = "Диалог сброшен. Начнем заново. Как вас зовут?"
-GENERIC_ERROR_MESSAGE = "Сейчас не удалось обработать обращение. Попробуйте еще раз через пару минут."
-UNSUPPORTED_MESSAGE = "Пожалуйста, опишите проблему текстом, и я помогу оформить заявку."
+GENERIC_ERROR_MESSAGE = "Сейчас не удалось обработать запрос. Попробуйте еще раз через пару минут."
+UNSUPPORTED_MESSAGE = "Пожалуйста, напишите ответ текстом, и я помогу оформить запись на консультацию."
 
 
 @router.message(Command("start"))
@@ -90,7 +90,7 @@ async def handle_text_message(
         reply = await workflow.process_message(session, message.text)
         await message.answer(reply)
     except Exception:
-        logger.exception("Failed to process incoming support message")
+        logger.exception("Failed to process incoming consultation message")
         await message.answer(GENERIC_ERROR_MESSAGE)
 
 

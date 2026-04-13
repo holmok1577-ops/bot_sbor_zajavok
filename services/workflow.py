@@ -7,8 +7,8 @@ from services.telegram import OperatorNotifier
 logger = logging.getLogger(__name__)
 
 FINAL_CLIENT_MESSAGE = (
-    "Спасибо! Я передал вашу заявку специалисту. "
-    "Мы свяжемся с вами в ближайшее время."
+    "Спасибо! Я передал вашу заявку менеджеру. "
+    "С вами свяжутся для подтверждения консультации."
 )
 
 
@@ -46,7 +46,7 @@ class SupportWorkflowService:
             await self._notifier.send_ticket(session)
             session.submitted = True
             session.add_assistant_message(FINAL_CLIENT_MESSAGE)
-            logger.info("Ticket submitted for user_id=%s", session.user_id)
+            logger.info("Consultation request submitted for user_id=%s", session.user_id)
             return FINAL_CLIENT_MESSAGE
 
         session.add_assistant_message(turn.reply)
